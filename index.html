@@ -7,16 +7,24 @@
     <title>API Test</title>
 </head>
 <body>
-    <img src="#">
+    <h1 style="display: block; text-align: center;">Cats Extraaaavaganzaaa</h1>
+    <img src="#" style="display: block; margin: 20px auto;">
+    <button onclick="getCat()" style="padding: 10px; display: block; margin: 0 auto;">New Cat</button>
     <script>
+        
+        document.addEventListener("onload", getCat());
+
         const img = document.querySelector("img");
-        fetch("https://api.giphy.com/v1/gifs/translate?api_key=OlAFUT9Nd0N35JWk17o8GjiPFbBPirSb&s=cats",{mode:"cors"})
-        .then(function(response){
-            return response.json();
-        })
-        .then(function(response){
-            img.src = (response.data.images.original.url);
-        });
+        
+        function getCat(){
+            fetch("https://api.giphy.com/v1/gifs/translate?api_key=OlAFUT9Nd0N35JWk17o8GjiPFbBPirSb&s=cats",{mode:"cors"})
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(response){
+                img.src = (response.data.images.original.url);
+            });
+        }
     </script>
 </body>
 </html>
