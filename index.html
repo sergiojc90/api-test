@@ -16,15 +16,13 @@
 
         const img = document.querySelector("img");
         
-        function getCat(){
-            fetch("https://api.giphy.com/v1/gifs/translate?api_key=OlAFUT9Nd0N35JWk17o8GjiPFbBPirSb&s=cats",{mode:"cors"})
-            .then(function(response){
-                return response.json();
-            })
-            .then(function(response){
-                img.src = (response.data.images.original.url);
-            });
+        async function getCat(){
+            const response = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=OlAFUT9Nd0N35JWk17o8GjiPFbBPirSb&s=cats",{mode:"cors"});
+            const catData = await response.json();
+            img.src = (response.data.images.original.url);
         }
+
+        getCat();
     </script>
 </body>
 </html>
